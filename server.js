@@ -14,8 +14,7 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`;
-
+const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`;
 // Transform plain text to legal language
 app.post('/api/transform', async (req, res) => {
   const { text, tone, area } = req.body;
