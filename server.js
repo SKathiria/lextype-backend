@@ -38,9 +38,9 @@ Respond with ONLY the transformed legal text, nothing else.`;
     });
 
     const data = await response.json();
-    const result = data.candidates[0].content.parts[0].text;
-    res.json({ result, tone: tone || 'formal', area: area || 'general' });
-
+    const result = data?.candidates?.[0]?.content?.parts?.[0]?.text || 
+                   data?.error?.message || 
+                  "Unable to transform text. Please try again.";    res.json({ result, tone: tone || 'formal', area: area || 'general' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Something went wrong' });
